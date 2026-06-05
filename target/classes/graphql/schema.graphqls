@@ -1,0 +1,32 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# CampusHub GraphQL Schema
+# CQRS mapping:
+#   type Query    → Read Model  (no side effects, idempotent)
+#   type Mutation → Write Model (changes system state)
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Queries — CQRS Read Model
+type Query {
+    getAllStudents: [Student]
+    getStudentById(id: ID!): Student
+}
+
+# Mutations — CQRS Write Model
+type Mutation {
+    createStudent(name: String!, email: String!): Student!
+    addSubjectToStudent(studentId: ID!, subjectName: String!): Subject!
+}
+
+# Data Models
+type Student {
+    id: ID!
+    name: String!
+    email: String!
+    subjects: [Subject]
+}
+
+type Subject {
+    id: ID!
+    name: String!
+    credits: Int!
+}
