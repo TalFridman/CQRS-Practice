@@ -32,7 +32,6 @@ public class StudentController {
     // TODO 1: Map this method to the GraphQL Query "getStudentById".
     // Use the @QueryMapping annotation.
     // Use @Argument to receive the "id" parameter as a Long.
-    // Delegate to studentService.findById(id) and return the result.
     @QueryMapping
     public Student getStudentById(@Argument Long id) {
         // TODO: Implement this method
@@ -41,7 +40,6 @@ public class StudentController {
 
     // TODO 2: Map this method to the GraphQL Query "getAllStudents".
     // Use the @QueryMapping annotation.
-    // Delegate to studentService.findAll() and return the result.
     @QueryMapping
     public List<Student> getAllStudents() {
         // TODO: Implement this method
@@ -58,7 +56,6 @@ public class StudentController {
     // Use the @SchemaMapping annotation — Spring infers type=Student, field=subjects
     // from the method name and parameter type automatically.
     // Receive the parent Student object as a parameter.
-    // Delegate to subjectService.findByStudentId(student.getId()).
     @SchemaMapping
     public List<Subject> subjects(Student student) {
         // TODO: Implement this method
@@ -74,7 +71,6 @@ public class StudentController {
     // TODO 4: Map this method to the GraphQL Mutation "createStudent".
     // Use the @MutationMapping annotation.
     // Use @Argument for both "name" and "email" String parameters.
-    // Delegate to studentService.createNewStudent(name, email) and return the result.
     @MutationMapping
     public Student createStudent(@Argument String name,
                                  @Argument String email) {
